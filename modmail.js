@@ -617,20 +617,6 @@ module.exports = client => {
             message: config.nachricht
         })
         let data = client.modmailDb.get(guild.id)
-        if(data.enabled){
-            client.modmailDb.delete(dmauthor.id);
-            return message.reply({
-                embeds: [
-                    new Discord.MessageEmbed()
-                        .setAuthor(dmauthor.tag, dmauthor.displayAvatarURL({dynamic: true}))
-                        .setTimestamp()
-                        .setFooter(`ID: ${dmauthor.id}`, dmauthor.displayAvatarURL({dynamic: true}))
-                        .setColor("RED")
-                        .setTitle("❌ This Guild is not setupped yet!")
-                        .setDescription(`an admin can do it with \`${config.prefix}setup\``)
-                ]
-            }).catch(console.error)
-        }
         let category = config.kategorie;
         if(category && category.type == "GUILD_CATEGORY") {
             if(category.children.size >= 50){
