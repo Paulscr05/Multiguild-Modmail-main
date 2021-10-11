@@ -168,6 +168,7 @@ module.exports = client => {
                                 {name: "**ping**", value: `> *Meine + API Latenz!*`, inline: true},
                                 {name: "\u200b", value: `\u200b`, inline: false},
                                 {name: "**close**", value: `> *Schließe das Ticket (oder nutze den Button)*`, inline: true},  
+                                {name: "**delete**", value: `> *Schließe den Kanal des Tickets*`, inline: true},
                                 {name: "**reply**", value: `> *Antworte dem User!*`, inline: true},                          ])
                             .setFooter(guild.name, guild.iconURL({dynamic: true})))
                         message.reply({embeds})
