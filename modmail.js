@@ -138,7 +138,26 @@ module.exports = client => {
                                     ]
                             }).catch(console.error)
                         }
-                    } else if(cmd == "help") {
+                    }
+
+                    else if(cmd === 'delete') {
+                        if(data.category == message.channel.parentId){
+                            channel.delete(message.channel)
+                        } else {
+                            return message.reply({
+                                embeds: [
+                                    new Discord.MessageEmbed()
+                                        .setAuthor(serverauthor.tag, serverauthor.displayAvatarURL({dynamic: true}))
+                                        .setTimestamp()
+                                        .setFooter(`ID: ${serverauthor.id}`, serverauthor.displayAvatarURL({dynamic: true}))
+                                        .setColor("RED")
+                                        .setTitle("❌ Dieser Kanal ist kein Ticket!")
+                                    ]
+                            }).catch(console.error)
+                        }
+                    }
+                    
+                    else if(cmd == "help") {
                         let { guild } = message
                         let embeds = []
                         embeds.push(new Discord.MessageEmbed()
