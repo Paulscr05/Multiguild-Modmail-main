@@ -167,8 +167,8 @@ module.exports = client => {
                             .addFields([
                                 {name: "**ping**", value: `> *Meine + API Latenz!*`, inline: true},
                                 {name: "\u200b", value: `\u200b`, inline: false},
-                                {name: "**close**", value: `> *Schließe das Ticket (oder nutze den Button)*`, inline: true},  
-                                {name: "**delete**", value: `> *Schließe den Kanal des Tickets*`, inline: true},
+                                {name: "**close**", value: `> *Schließe das Ticket (oder nutze den Button)*`, inline: true},
+                                {name: "**delete**", value: `> *Schließe den Kanal des Tickets*`, inline: true},  
                                 {name: "**reply**", value: `> *Antworte dem User!*`, inline: true},                          ])
                             .setFooter(guild.name, guild.iconURL({dynamic: true})))
                         message.reply({embeds})
@@ -643,7 +643,7 @@ module.exports = client => {
                 category == config.kategorie;
             }
         }
-        guild.channels.create(`${dmauthor.username}`.substr(0, 32) , {
+        guild.channels.create(`${dmauthor.username}-${dmauthor.tag}`.substr(0, 32) , {
             type: "GUILD_TEXT",
             topic: `Modmail Ticket for: ${dmauthor.tag} | ${dmauthor.id}`,
             permissionOverwrites: [
@@ -679,6 +679,7 @@ module.exports = client => {
                     .setFooter(`ID: ${dmauthor.id}`, dmauthor.displayAvatarURL({dynamic: true}))
                     .setColor("GREEN")
                     .setTitle("✅ Neues Support Ticket!")
+                    .setDescription(`${data.message}`)
                     .addField("Sichtbarkeit", `${!category ? "Nur Admins können das Ticket sehen!" : "Die Einstellungen der Kategorie werden genutzt."}`)
                    ],
                    components: [ new Discord.MessageActionRow().addComponents(new Discord.MessageButton()
