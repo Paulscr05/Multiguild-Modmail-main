@@ -142,7 +142,7 @@ module.exports = client => {
 
                     else if(cmd === 'delete') {
                         if(data.category == message.channel.parentId){
-                            channel.delete(message.channel)
+                            message.channel.delete()
                         } else {
                             return message.reply({
                                 embeds: [
